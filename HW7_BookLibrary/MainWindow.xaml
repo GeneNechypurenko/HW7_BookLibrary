@@ -1,0 +1,43 @@
+﻿<Window x:Class="HW7_BookLibrary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW7_BookLibrary"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" ></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBox Name="searchTextBox" FontSize="12" Margin="5 20 5 0"></TextBox>
+            <Button Name="searchButton" Margin="5 5 5 0" Click="searchButton_Click">SEARCH</Button>
+            <Button Name="addBookButton" Margin="5 5 5 0" Click="addBookButton_Click">ADD BOOK</Button>
+            <Button Name="showBookInfoButton" Margin="5 5 5 0" Click="showBookInfoButton_Click">SHOW BOOK INFO</Button>
+            <Button Name="editBookInfoButton" Margin="5 5 5 0" Click="editBookInfoButton_Click">EDIT BOOK</Button>
+            <Button Name="removeBookInfoButton" Margin="5 5 5 0" Click="removeBookInfoButton_Click">REMOVE BOOK</Button>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.Column="1" Name="outputListBox" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" Margin="10" BorderThickness="3" BorderBrush="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="SlateGray" Orientation="Horizontal">
+                        <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" FontWeight="Bold" Foreground="GhostWhite" Margin="140 0 0 2"></TextBlock>
+                        <TextBlock Text="{Binding Author, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" FontWeight="Bold" Foreground="GhostWhite" Margin="20 0 0 2"></TextBlock>
+                        <TextBlock Text="{Binding Year, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" FontWeight="Bold" Foreground="GhostWhite" Margin="20 0 140 2"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
